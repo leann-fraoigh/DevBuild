@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 /* eslint-disable no-undef */
 /* eslint-disable new-cap */
 /* eslint-disable no-unused-vars */
@@ -212,26 +213,12 @@ if (consultationLink) {
 
 
 var telInput = document.getElementById('customer-phone');
+var telInputPopup = document.getElementById('customer-phone-popup');
 
 var maskOptions = {
   mask: '+{7}(000)000-00-00'
 };
 // eslint-disable-next-line no-undef
 var mask = IMask(telInput, maskOptions);
+var mask = IMask(telInputPopup, maskOptions);
 
-// var numberMask = IMask(telInput, {
-//   mask: Number, // enable number mask
-
-//   // other options are optional with defaults below
-//   scale: 2, // digits after point, 0 for integers
-//   signed: false, // disallow negative
-//   thousandsSeparator: '', // any single char
-//   padFractionalZeros: false, // if true, then pads zeros at end to the length of scale
-//   normalizeZeros: true, // appends or removes zeros at ends
-//   radix: ',', // fractional delimiter
-//   mapToRadix: ['.'], // symbols to process as radix
-
-//   // additional number interval options (e.g.)
-//   min: 0,
-//   max: 100000000000
-// });
