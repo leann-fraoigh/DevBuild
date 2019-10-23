@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable new-cap */
+/* eslint-disable no-unused-vars */
 'use strict';
 
 // ЗАМЕНА ТЕКСТА
@@ -162,42 +165,73 @@ if (window.localStorage) {
   }
 }
 
-// // ПРОКРУТКА
+// ПРОКРУТКА
 
-// var advantages = document.getElementById('advantages');
-// var consultation = document.getElementById('consultation');
+var advantagesLink = document.querySelector('.header__scroll-link');
+var consultationLink = document.querySelector('.header__main .button');
 
-// var advantagesLink = document.querySelector('.header__scroll-link');
-// var consultationLink = document.querySelector('.header__main .button');
-
-// function handleAnchorClick(link, aim) {
-//   if (link && aim) {
-//     event.preventDefault();
-//     aim.scrollIntoView({block: 'start', behavior: 'smooth'});
-//   }
-// }
-
-// advantagesLink.addEventListener('click', handleAnchorClick(advantagesLink, advantages));
-// consultationLink.addEventListener('click', handleAnchorClick(consultationLink, consultation));
-
-// МАСКА ДЛЯ ПОЛЯ ТЕЛЕФОНА
-var telInputPopup = document.getElementById('customer-phone-popup');
-var telInput = document.getElementById('customer-phone');
-
-var testSymbol = function () {
-  var id = event.target.id;
-  var element = document.getElementById(id);
-  var text = element.value;
-  if (isNaN(text)) {
-    element.value = text.substring(0, text.length - 1);
-  }
+var handleAnchorClick = function () {
+  event.preventDefault();
+  var linkTarget = event.currentTarget.getAttribute('href');
+  var id = linkTarget.substring(1, linkTarget.length);
+  var aim = document.getElementById(id);
+  aim.scrollIntoView({block: 'start', behavior: 'smooth'});
 };
 
-if (telInputPopup) {
-  telInputPopup.addEventListener('keyup', testSymbol);
+if (advantagesLink) {
+  advantagesLink.addEventListener('click', handleAnchorClick);
 }
 
-if (telInputPopup) {
-  telInput.addEventListener('keyup', testSymbol);
+if (consultationLink) {
+  consultationLink.addEventListener('click', handleAnchorClick);
 }
 
+// МАСКА ДЛЯ ПОЛЯ ТЕЛЕФОНА
+
+// var telInputPopup = document.getElementById('customer-phone-popup');
+// var telInput = document.getElementById('customer-phone');
+
+// var testSymbol = function () {
+//   var id = event.target.id;
+//   var element = document.getElementById(id);
+//   var text = element.value;
+//   if (isNaN(text)) {
+//     element.value = text.substring(0, text.length - 1);
+//   }
+// };
+
+// if (telInputPopup) {
+//   telInputPopup.addEventListener('keyup', testSymbol);
+// }
+
+// if (telInputPopup) {
+//   telInput.addEventListener('keyup', testSymbol);
+// }
+
+// var telInputPopup = document.getElementById('customer-phone-popup');
+
+
+var telInput = document.getElementById('customer-phone');
+
+var maskOptions = {
+  mask: '+{7}(000)000-00-00'
+};
+// eslint-disable-next-line no-undef
+var mask = IMask(telInput, maskOptions);
+
+// var numberMask = IMask(telInput, {
+//   mask: Number, // enable number mask
+
+//   // other options are optional with defaults below
+//   scale: 2, // digits after point, 0 for integers
+//   signed: false, // disallow negative
+//   thousandsSeparator: '', // any single char
+//   padFractionalZeros: false, // if true, then pads zeros at end to the length of scale
+//   normalizeZeros: true, // appends or removes zeros at ends
+//   radix: ',', // fractional delimiter
+//   mapToRadix: ['.'], // symbols to process as radix
+
+//   // additional number interval options (e.g.)
+//   min: 0,
+//   max: 100000000000
+// });
